@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Pawnshop Operation</title>
+</head>
+<body>
+<h2>Pawnshop Operation Details</h2>
+<p>ID: <span th:text="${pawnshopOperation.getID()}"></span></p>
+<p>Client: <span th:text="${pawnshopOperation.getClient().getFirstName()} +' '+ ${pawnshopOperation.getClient().getLastName()}"></span></p>
+<p>Item: <span th:text="${pawnshopOperation.getItem().getItemName()}"></span></p>
+<p>Transaction Date: <span th:text="${#dates.format(pawnshopOperation.getTransactionDate(), 'yyyy-MM-dd HH:mm')}"></span></p>
+<p>Loan Amount: <span th:text="${pawnshopOperation.getLoanAmount()}"></span></p>
+<a th:href="@{/pawnshop-operations}">Back to List</a>
+</body>
+</html>

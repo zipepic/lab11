@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pawnshop Operation List</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+    header {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    nav {
+        background-color: #666;
+        padding: 10px;
+        text-align: center;
+    }
+    nav a {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        margin: 0 5px;
+    }
+    nav a:hover {
+        background-color: #555;
+    }
+    section {
+        padding: 20px;
+    }
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+</style>
+<body>
+<h2>Pawnshop Operation List</h2>
+<nav>
+    <a href="/clients">Клиенты</a>
+    <a href="/items">Предметы</a>
+    <a href="/partners">Партнеры</a>
+    <a href="/">Дом</a>
+</nav>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Client</th>
+        <th>Item</th>
+        <th>Transaction Date</th>
+        <th>Loan Amount</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pawnshopOperation : ${pawnshopOperations}">
+        <td th:text="${pawnshopOperation.getID()}"></td>
+        <td th:text="${pawnshopOperation.getClient().getFirstName()}+' '+ ${pawnshopOperation.getClient().getLastName()}"></td>
+        <td th:text="${pawnshopOperation.getItem().getItemName()}"></td>
+        <td th:text="${#dates.format(pawnshopOperation.getTransactionDate(), 'yyyy-MM-dd HH:mm')}"></td>
+        <td th:text="${pawnshopOperation.getLoanAmount()}"></td>
+        <td>
+            <a th:href="@{/pawnshop-operations/{id}(id=${pawnshopOperation.getID()})}">View</a>
+            <a th:href="@{/pawnshop-operations/edit/{id}(id=${pawnshopOperation.getID()})}">Edit</a>
+            <a th:href="@{/pawnshop-operations/delete/{id}(id=${pawnshopOperation.getID()})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/pawnshop-operations/add}">Add Pawnshop Operation</a>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Partner</title>
+</head>
+<body>
+<h2>Add New Partner</h2>
+<form th:action="@{/partners/add}" th:object="${partner}" method="post">
+    <label>Partner Name: <input type="text" th:field="*{partnerName}" /></label><br/>
+    <label>Description: <input type="text" th:field="*{description}" /></label><br/>
+    <label>Contact Information: <input type="text" th:field="*{contactInformation}" /></label><br/>
+    <button type="submit">Add Partner</button>
+</form>
+<a th:href="@{/partners}">Back to List</a>
+</body>
+</html>

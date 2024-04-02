@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Item List</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+    header {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    nav {
+        background-color: #666;
+        padding: 10px;
+        text-align: center;
+    }
+    nav a {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        margin: 0 5px;
+    }
+    nav a:hover {
+        background-color: #555;
+    }
+    section {
+        padding: 20px;
+    }
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+</style>
+<body>
+<h2>Item List</h2>
+<nav>
+    <a href="/clients">Клиенты</a>
+    <a href="/">Дом</a>
+    <a href="/partners">Партнеры</a>
+    <a href="/pawnshop-operations">Операции</a>
+</nav>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Item Name</th>
+        <th>Description</th>
+        <th>Photos</th>
+        <th>Price</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${items}">
+        <td th:text="${item.getID()}"></td>
+        <td th:text="${item.getItemName()}"></td>
+        <td th:text="${item.getDescription()}"></td>
+        <td th:text="${item.getPhotos()}"></td>
+        <td th:text="${item.getPrice()}"></td>
+        <td>
+            <a th:href="@{/items/{id}(id=${item.getID()})}">View</a>
+            <a th:href="@{/items/edit/{id}(id=${item.getID()})}">Edit</a>
+            <a th:href="@{/items/delete/{id}(id=${item.getID()})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/items/add}">Add Item</a>
+
+<form th:action="@{/items/download}" method="post">
+    <button type="submit">Download Items as TXT</button>
+</form>
+</body>
+</html>

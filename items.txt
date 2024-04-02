@@ -1,0 +1,10 @@
+ID: 1, Item Name: Laptop, Description: A powerful laptop, Photos: laptop.jpg, Price: 999.99
+ID: 2, Item Name: Smartphone, Description: The latest smartphone, Photos: smartphone.jpg, Price: 699.99
+ID: 3, Item Name: Television, Description: A high-definition TV, Photos: tv.jpg, Price: 1499.99
+ID: 4, Item Name: Headphones, Description: High-quality headphones, Photos: headphones.jpg, Price: 199.99
+ID: 5, Item Name: Camera, Description: Professional camera, Photos: camera.jpg, Price: 1499.99
+ID: 6, Item Name: Gaming Console, Description: Popular gaming console, Photos: console.jpg, Price: 399.99
+ID: 7, Item Name: Watch, Description: Luxury watch, Photos: watch.jpg, Price: 299.99
+ID: 8, Item Name: Tablet, Description: Portable tablet, Photos: tablet.jpg, Price: 599.99
+ID: 52, Item Name: Test, Description: none, Photos: none , Price: 1000.00
+ID: 53, Item Name: Test2, Description: none, Photos: 12, Price: 14000.00

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Partner</title>
+</head>
+<body>
+<h2>Partner Details</h2>
+<p>ID: <span th:text="${partner.id}"></span></p>
+<p>Partner Name: <span th:text="${partner.partnerName}"></span></p>
+<p>Description: <span th:text="${partner.description}"></span></p>
+<p>Contact Information: <span th:text="${partner.contactInformation}"></span></p>
+<a th:href="@{/partners}">Back to List</a>
+</body>
+</html>

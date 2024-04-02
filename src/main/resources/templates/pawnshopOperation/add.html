@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Pawnshop Operation</title>
+</head>
+<body>
+<h2>Add New Pawnshop Operation</h2>
+<form th:action="@{/pawnshop-operations/add}" th:object="${pawnshopOperation}" method="post">
+    <label>Client: <input type="text" th:field="*{client.firstName}" placeholder="First Name" />
+        <input type="text" th:field="*{client.lastName}" placeholder="Last Name" /></label><br/>
+    <label>Item: <input type="text" th:field="*{item.itemName}" /></label><br/>
+    <label>Transaction Date: <input type="text" th:field="*{transactionDate}" placeholder="yyyy-MM-dd HH:mm" /></label><br/>
+    <label>Loan Amount: <input type="text" th:field="*{loanAmount}" /></label><br/>
+    <button type="submit">Add Pawnshop Operation</button>
+</form>
+<a th:href="@{/pawnshop-operations}">Back to List</a>
+</body>
+</html>

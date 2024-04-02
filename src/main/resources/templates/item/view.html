@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Item</title>
+</head>
+<body>
+<h2>Item Details</h2>
+<p>ID: <span th:text="${item.getID()}"></span></p>
+<p>Item Name: <span th:text="${item.getItemName()}"></span></p>
+<p>Description: <span th:text="${item.getDescription()}"></span></p>
+<p>Photos: <span th:text="${item.getPhotos()}"></span></p>
+<p>Price: <span th:text="${item.getPrice()}"></span></p>
+<a th:href="@{/items}">Back to List</a>
+</body>
+</html>

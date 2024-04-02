@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Partner List</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+    header {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    nav {
+        background-color: #666;
+        padding: 10px;
+        text-align: center;
+    }
+    nav a {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        margin: 0 5px;
+    }
+    nav a:hover {
+        background-color: #555;
+    }
+    section {
+        padding: 20px;
+    }
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+</style>
+<body>
+<h2>Partner List</h2>
+<nav>
+    <a href="/clients">Клиенты</a>
+    <a href="/items">Предметы</a>
+    <a href="/">Дом</a>
+    <a href="/pawnshop-operations">Операции</a>
+</nav>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Partner Name</th>
+        <th>Description</th>
+        <th>Contact Information</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="partner : ${partners}">
+        <td th:text="${partner.getID()}"></td>
+        <td th:text="${partner.getPartnerName()}"></td>
+        <td th:text="${partner.getDescription()}"></td>
+        <td th:text="${partner.getContactInformation()}"></td>
+        <td>
+            <a th:href="@{/partners/{id}(id=${partner.getID()})}">View</a>
+            <a th:href="@{/partners/edit/{id}(id=${partner.getID()})}">Edit</a>
+            <a th:href="@{/partners/delete/{id}(id=${partner.getID()})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/partners/add}">Add Partner</a>
+</body>
+</html>

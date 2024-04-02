@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Partner</title>
+</head>
+<body>
+<h2>Edit Partner</h2>
+<form th:action="@{/partners/edit/{id}(id=${partner.getID()})}" th:object="${partner}" method="post">
+    <label>Partner Name: <input type="text" th:field="*{partnerName}" /></label><br/>
+    <label>Description: <input type="text" th:field="*{description}" /></label><br/>
+    <label>Contact Information: <input type="text" th:field="*{contactInformation}" /></label><br/>
+    <button type="submit">Update Partner</button>
+</form>
+<a th:href="@{/partners}">Back to List</a>
+</body>
+</html>

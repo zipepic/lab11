@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Client List</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+    header {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    nav {
+        background-color: #666;
+        padding: 10px;
+        text-align: center;
+    }
+    nav a {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        margin: 0 5px;
+    }
+    nav a:hover {
+        background-color: #555;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #444;
+        color: white;
+    }
+    tr:hover {
+        background-color: #f2f2f2;
+    }
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+</style>
+<body>
+<h2>Client List</h2>
+<nav>
+    <a href="/">Дом</a>
+    <a href="/items">Предметы</a>
+    <a href="/partners">Партнеры</a>
+    <a href="/pawnshop-operations">Операции</a>
+</nav>
+<table>
+    <thead>
+    <tr>
+        <th><a th:href="@{/clients(sort='ID',page=0,size=${totalItems},keyword=${keyword})}">ID</a></th>
+        <th><a th:href="@{/clients(sort='firstName',page=0,size=${totalItems},keyword=${keyword})}">Name</a></th>
+        <!-- Add other fields as needed -->
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="client : ${clients}">
+        <td th:text="${client.ID}"></td>
+        <td th:text="${client.firstName}"></td>
+        <!-- Add other fields as needed -->
+        <td>
+            <a th:href="@{/clients/{id}(id=${client.ID})}">View</a>
+            <a th:href="@{/clients/edit/{id}(id=${client.ID})}">Edit</a>
+            <a th:href="@{/clients/delete/{id}(id=${client.ID})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div th:if="${totalPages > 1}">
+    <div>
+        <span>Page <b th:text="${currentPage + 1}"></b> of <b th:text="${totalPages}"></b></span>
+    </div>
+    <div>
+        <span>Total items: <b th:text="${totalItems}"></b></span>
+    </div>
+    <div>
+        <span>Sort by: </span>
+        <select onchange="window.location.href = this.value;">
+            <option value="?sort=${sortField}&amp;page=${currentPage}&amp;size=${totalItems}&amp;keyword=${keyword}&amp;direction=asc"
+                    th:text="Ascending" th:selected="${sortDirection == 'ASC'}"></option>
+            <option value="?sort=${sortField}&amp;page=${currentPage}&amp;size=${totalItems}&amp;keyword=${keyword}&amp;direction=desc"
+                    th:text="Descending" th:selected="${sortDirection == 'DESC'}"></option>
+        </select>
+    </div>
+    <form th:action="@{/clients}" method="get">
+        <input type="text" name="keyword" placeholder="Search..." value="${keyword}">
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+<a th:href="@{/clients/add}">Add Client</a>
+</body>
+</html>

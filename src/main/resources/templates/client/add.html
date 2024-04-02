@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Client</title>
+</head>
+<body>
+<h2>Add New Client</h2>
+<form th:action="@{/clients/add}" th:object="${client}" method="post">
+  <label>Name: <input type="text" th:field="*{firstName}" /></label>
+  <!-- Add other fields as needed -->
+  <button type="submit">Add Client</button>
+</form>
+<a th:href="@{/clients}">Back to List</a>
+</body>
+</html>
