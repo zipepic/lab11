@@ -77,8 +77,8 @@
 </form>
 
 <h2>Результат:</h2>
-<p>Цена продажи: <span th:text="${salePrice}"></span></p>
-<p>Цена покупки: <span th:text="${redemptionPrice}"></span></p>
+<p>Цена продажи: <span id="p" th:text="${salePrice}"></span></p>
+<p>Цена покупки: <span id="pp" th:text="${redemptionPrice}"></span></p>
 
 <form action="/price/bal" method="POST">
     <label for="itemPrice1">Цена</label>
